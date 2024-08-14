@@ -36,6 +36,9 @@ public:
 
     Node* extractMin(Node*& root); // defenition and this function is not make by me
 
+    T BFS() const;
+    T DFS() const;
+
     ~BST(){free(root);}
 
 private:
@@ -98,6 +101,14 @@ typename BST<T>::Node * BST<T>::extractMin(Node *&root) {
     node* n = root;
     root = root->right;
     return n;
+}
+
+template<class T>
+T BST<T>::BFS() const {
+}
+
+template<class T>
+T BST<T>::DFS() const {
 }
 
 template<class T>
