@@ -61,6 +61,7 @@ Stack<T> & Stack<T>::operator=(const Stack &other) {
         free()();
         copyFrom(other);
     }
+    return *this;
 }
 
 template<class T>
@@ -69,6 +70,7 @@ Stack<T> & Stack<T>::operator=(Stack &&other) {
         free();
         moveFrom(std::move(other));
     }
+    return *this;
 }
 
 template<class T>
