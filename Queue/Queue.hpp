@@ -42,7 +42,7 @@ template<class T>
 void Queue<T>::enqueue(const T &data) {
     if(!isFUll()) {
         this->data[this->end] = data;
-        this.end = (this->end + 1) % this.size;
+        this->end = (this->end + 1) % this->size;
     }
     else
         throw std::overflow_error("Queue is full");

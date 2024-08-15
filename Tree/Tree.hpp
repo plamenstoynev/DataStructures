@@ -36,8 +36,8 @@ public:
 
     Node* extractMin(Node*& root); // defenition and this function is not make by me
 
-    T BFS() const;
-    T DFS() const;
+    void BFS() const;
+    void DFS() const;
 
     ~BST(){free(root);}
 
@@ -104,11 +104,25 @@ typename BST<T>::Node * BST<T>::extractMin(Node *&root) {
 }
 
 template<class T>
-T BST<T>::BFS() const {
+void BST<T>::BFS() const {
+    Queue<Node*> queue(this->size);
+
+    queue.enqueue(this->root);
+    Node* temp{};
+
+    while(!queue.isEmpty()) {
+        temp = queue.first();
+        queue.dequeue();
+
+        if(temp->left)
+            queue.enqueue(temp->left);
+        if(temp->right)
+            queue.enqueue(temp->right);
+    }
 }
 
 template<class T>
-T BST<T>::DFS() const {
+void BST<T>::DFS() const {
 }
 
 template<class T>
@@ -127,7 +141,7 @@ void BST<T>::insert(Node *&root, const T &key) {
     if(!root)
         root = new Node(key);
     else
-        insert(key < root->key ? root->left, root->right, key);
+        insert(key < root->key ? root->left : root->right, key);
 }
 
 template<class T>
