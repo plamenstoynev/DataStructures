@@ -2,6 +2,7 @@
 #include <__bit_reference>
 
 #include "../Queue/Queue.hpp"
+#include "../Stack/Stack.hpp"
 
 template <class T>
 
@@ -123,6 +124,22 @@ void BST<T>::BFS() const {
 
 template<class T>
 void BST<T>::DFS() const {
+    if(!this->root)
+        return;
+
+    Stack stack(this->size);
+    stack.push(this->root);
+    Node* temp = nullptr;
+
+    while (!stack.isEmpty()) {
+        temp = stack.top();
+        stack.pop();
+
+        if(temp->right)
+            stack.push(temp->right);
+        if(temp->left)
+            stack.push(temp->left);
+    }
 }
 
 template<class T>
